@@ -18,6 +18,7 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
 
     if trigger_value != None and number >= trigger_for_free:
         free = floor((trigger_value - not_free)/trigger_for_free)
+        print(free)
         number = number - free
 
     if small_deal_price==None:
@@ -70,7 +71,7 @@ def checkout(skus):
         {'Item':'R','Price':50,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'S','Price':30,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'T','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
-        {'Item':'U','Price':40,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':3,'trigger_value':'U','min_basket':None},
+        {'Item':'U','Price':40,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':3,'trigger_value':'U','min_basket':4},
         {'Item':'V','Price':50,'small_deal_price':90,'small_deal_quantity':2,'big_deal_price':130,'big_deal_quantity':3,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'W','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'X','Price':90,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
