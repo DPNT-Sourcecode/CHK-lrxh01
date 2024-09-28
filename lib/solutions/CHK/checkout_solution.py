@@ -10,14 +10,14 @@ from math import floor
 def get_value(number,price, deal_price_1=None, deal_amount_1=None, deal_price_2=None, deal_amount_2=None):
     if deal_price_1==None:
         return number*price
-    elif deal_price_1:
-        floor(number/deal_amount_1)*deal_price_1 + (number % deal_amount_1)*price
+    elif deal_price_1 and deal_amount_2==None:
+        return floor(number/deal_amount_1)*deal_price_1 + (number % deal_amount_1)*price
     elif deal_amount_2:
         big_deals = floor(number/deal_amount_2)
         number_remaining =  number - big_deals*deal_amount_2
         small_deals = floor(number_remaining/deal_amount_1)
-        remaining = small_deals - small_deals*deal_amount_1
-
+        remaining = number_remaining - small_deals*deal_amount_1
+        print(remaining)
         return big_deals* deal_price_2 + small_deals*deal_price_1 + (remaining % deal_amount_1)*price
     else:
         return 0
@@ -88,4 +88,5 @@ def checkout(skus):
         return -1
 
     return total
+
 
