@@ -5,6 +5,7 @@
 
 import re
 from math import floor
+
 def checkout(skus):
 
     if skus == "":
@@ -39,6 +40,7 @@ def checkout(skus):
     number_of_c = skus.count('C')
     number_of_d = skus.count('D')
     number_of_e = skus.count('E')
+    number_of_f = skus.count('F')
 
     
     a_5_deals = floor(number_of_a/prices['A_second_amount'])
@@ -47,36 +49,28 @@ def checkout(skus):
     a_remaining = a_3_remaining - a_3_deals*prices["A_deal_ammount"]
     e_deals = floor(number_of_e/2)
 
-    # initially added in all specials first
-    # if you bought 2b you got the discount
-    # then also got the full b price taken off
-    # if e_deals >= number_of_b:
-    #     free_b = number_of_b
-    # else:
-    #     free_b = e_deals
-
     if e_deals >= number_of_b:
         number_of_b = 0
     else:
         number_of_b = number_of_b - e_deals
 
     
-    
     value_of_a = a_5_deals* prices["A_second_deal"] + a_3_deals*prices["A_deal"]+ (a_remaining % prices["A_deal_ammount"])*prices['A']
-    
-
-    value_of_b= floor(number_of_b/prices['B_deal_ammount'])*prices["B_deal"] + (number_of_b % prices["B_deal_ammount"])*prices['B']
+    value_of_b = floor(number_of_b/prices['B_deal_ammount'])*prices["B_deal"] + (number_of_b % prices["B_deal_ammount"])*prices['B']
     value_of_c =  number_of_c * prices['C']
     value_of_d =  number_of_d *  prices['D'] 
     value_of_e = (number_of_e ) * prices["E"]
 
-    print(value_of_a,value_of_b,value_of_c,value_of_d)
+    if number_of_f > 3:
+        value_of_f = floor(number_of_f/prices['F_deal_ammount'])*prices["F_deal"] + (number_of_f % prices["F_deal_ammount"])*prices['F']
+    else:
+        value_of_f = number_of_f * prices['F']
 
-    total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e
+ 
+
+    total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e + value_of_f
 
     if total == 0:
         return -1
 
     return total
-
-

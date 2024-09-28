@@ -27,4 +27,3 @@ class TestCheckout():
     
     def test_all(self):
         assert checkout_solution.checkout('ABCDE') == 50+30+20+15+40
-
