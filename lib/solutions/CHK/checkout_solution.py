@@ -112,13 +112,14 @@ def checkout(skus):
         ['Y',grid[24]['Price'],values['Y']],
         ['Z',grid[25]['Price'],values['Z']],
     ]
-    total_string = '['
+    total_list = []
     for item in price_list:
-        total_string += f'{int(item[1])},'*int(item[2]/item[1])
-    total_string += ']'
-    print(json.loads(total_string))
+        for value in range(int(item[2]/item[1])):
+            total_list.append(item[1])
     
+    print(sorted(total_list))
     return total
+
 
 
 
