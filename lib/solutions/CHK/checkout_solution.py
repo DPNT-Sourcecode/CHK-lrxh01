@@ -49,6 +49,8 @@ def checkout(skus):
         free_b = number_of_b
     else:
         free_b = e_deals
+
+    print(free_b,number_of_b)
     
     
     value_of_a = a_5_deals* prices["A_second_deal"] + a_3_deals*prices["A_deal"]+ (a_remaining % prices["A_deal_ammount"])*prices['A']
