@@ -5,7 +5,7 @@ class TestCheckout():
         assert checkout_solution.checkout('A') == 50
 
     def test_lots_of_A(self):
-        assert checkout_solution.checkout('AAAA') == 180
+        assert checkout_solution.checkout('AAAAA') == 200
 
     def test_bad_string(self):
         assert checkout_solution.checkout('bad string') == -1
