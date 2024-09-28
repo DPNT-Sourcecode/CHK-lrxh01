@@ -4,4 +4,5 @@ from lib.solutions.HLO import hello_solution
 
 class HelloSum():
     def hello_sum(self):
-        assert hello_solution.compute('Test string') == 'Test String'
+        assert hello_solution.hello('Test string') == 'Test String'
+
