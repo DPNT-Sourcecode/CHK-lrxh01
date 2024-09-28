@@ -44,11 +44,18 @@ def checkout(skus):
     a_remaining = a_3_remaining - a_3_deals*prices["A_deal_ammount"]
     e_deals = floor(number_of_e/2)
 
+    # initially added in all specials first
+    # if you bought 2b you got the discount
+    # then also got the full b price taken off
+    # if e_deals >= number_of_b:
+    #     free_b = number_of_b
+    # else:
+    #     free_b = e_deals
 
     if e_deals >= number_of_b:
-        free_b = number_of_b
+        number_of_b = 0
     else:
-        free_b = e_deals
+        number_of_b = number_of_b - e_deals
 
     
     
@@ -62,9 +69,10 @@ def checkout(skus):
 
     print(value_of_a,value_of_b,value_of_c,value_of_d)
 
-    total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e - free_b*prices["B"]
+    total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e
 
     if total == 0:
         return -1
 
     return total
+

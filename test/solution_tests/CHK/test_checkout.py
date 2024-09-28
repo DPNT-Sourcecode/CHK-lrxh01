@@ -20,10 +20,11 @@ class TestCheckout():
         assert checkout_solution.checkout('AXA') == -1
 
     def test_free_b(self):
-        assert checkout_solution.checkout('EEEEBB') == 40+40+40+40-15
+        assert checkout_solution.checkout('EEEEBB') == 40+40+40+40
 
     def test_one_e(self):
         assert checkout_solution.checkout('E') == 40
     
     def test_all(self):
         assert checkout_solution.checkout('ABCDE') == 50+30+20+15+40
+
