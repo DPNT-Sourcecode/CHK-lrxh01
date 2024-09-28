@@ -39,9 +39,9 @@ def checkout(skus):
 
     
     a_5_deals = floor(number_of_a/prices['A_second_amount'])
-    print(a_5_deals)
-    a_3_deals = floor((number_of_a - a_5_deals*prices['A_second_amount'])/prices['A_deal_ammount'])
-    print(a_3_deals)
+    a_3_remaining =  number_of_a - a_5_deals*prices['A_second_amount']
+    a_3_deals = floor(a_3_remaining/prices['A_deal_ammount'])
+    a_remaining = a_3_remaining - a_3_deals*prices["A_deal_ammount"]
     e_deals = floor(number_of_e/2)
 
     if e_deals > number_of_b:
@@ -49,7 +49,7 @@ def checkout(skus):
     else:
         free_b = e_deals
     
-    value_of_a = a_5_deals* prices["A_second_deal"] + a_3_deals*prices["A_deal"]+ (number_of_a % prices["A_deal_ammount"])*prices['A']
+    value_of_a = a_5_deals* prices["A_second_deal"] + a_3_deals*prices["A_deal"]+ (a_remaining % prices["A_deal_ammount"])*prices['A']
     
 
     value_of_b= floor(number_of_b/prices['B_deal_ammount'])*prices["B_deal"] + (number_of_b % prices["B_deal_ammount"])*prices['B']
@@ -65,9 +65,3 @@ def checkout(skus):
         return -1
 
     return total
-
-
-
-
-
-

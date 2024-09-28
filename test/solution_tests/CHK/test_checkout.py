@@ -20,4 +20,4 @@ class TestCheckout():
         assert checkout_solution.checkout('AXA') == -1
 
     def test_free_b(self):
-        assert checkout_solution.checkout('EEB') == 80
+        assert checkout_solution.checkout('EEEEB') == 50
