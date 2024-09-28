@@ -14,7 +14,10 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
     else:
         not_free = 0
     if trigger_value != None:
+        print(number)
+        print(trigger_value)
         free = floor((trigger_value - not_free)/trigger_for_free)
+
     else:
         free = 0
     number = number - free
@@ -46,7 +49,7 @@ def checkout(skus):
         
     grid = [
         {'Item':'A','Price':50,'small_deal_price':130,'small_deal_quantity':3,'big_deal_price':200,'big_deal_quantity':5,
-        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        'trigger_for_free':None,'trigger_value':'None','min_basket':None},
         {'Item':'B','Price':30,'small_deal_price':45,'small_deal_quantity':2,'big_deal_price':None,'big_deal_quantity':None,
         'trigger_for_free':2,'trigger_value':'E','min_basket':None},
         ]
@@ -98,6 +101,7 @@ def checkout(skus):
         return -1
 
     return total
+
 
 
 
