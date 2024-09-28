@@ -7,21 +7,31 @@ import re
 from math import floor
 
 
-def get_value(number,price, deal_price_1=None, deal_amount_1=None, deal_price_2=None, deal_amount_2=None):
-    if deal_price_1==None:
+def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big_deal_price=None, 
+              big_deal_quantity=None,trigger_for_free=None,trigger_value=None,min_basket=None):
+    if min_basket != None:
+        not_free = min_basket - trigger_for_free
+    else:
+        not_free = 0
+    if trigger_value != None:
+        free = floor((number-not_free)/trigger_for_free)
+    else:
+        free = 0
+    number = number - free
+
+    if small_deal_price==None:
         return number*price
-    elif deal_price_1 and deal_amount_2==None:
-        return floor(number/deal_amount_1)*deal_price_1 + (number % deal_amount_1)*price
-    elif deal_amount_2:
-        big_deals = floor(number/deal_amount_2)
-        number_remaining =  number - big_deals*deal_amount_2
-        small_deals = floor(number_remaining/deal_amount_1)
-        remaining = number_remaining - small_deals*deal_amount_1
+    elif small_deal_price and big_deal_quantity==None:
+        return floor(number/small_deal_quantity)*small_deal_price + (number % small_deal_quantity)*price
+    elif big_deal_quantity:
+        big_deals = floor(number/big_deal_quantity)
+        number_remaining =  number - big_deals*big_deal_quantity
+        small_deals = floor(number_remaining/small_deal_quantity)
+        remaining = number_remaining - small_deals*small_deal_quantity
         print(remaining)
-        return big_deals* deal_price_2 + small_deals*deal_price_1 + (remaining % deal_amount_1)*price
+        return big_deals* big_deal_price + small_deals*small_deal_price + (remaining % small_deal_quantity)*price
     else:
         return 0
-
 
 
 
@@ -54,21 +64,10 @@ def checkout(skus):
     number_of_f = skus.count('F')
 
     
-    a_5_deals = floor(number_of_a/prices['A_second_amount'])
-    a_3_remaining =  number_of_a - a_5_deals*prices['A_second_amount']
-    a_3_deals = floor(a_3_remaining/prices['A_deal_ammount'])
-    a_remaining = a_3_remaining - a_3_deals*prices["A_deal_ammount"]
-    e_deals = floor(number_of_e/2)
-
-    if e_deals >= number_of_b:
-        number_of_b = 0
-    else:
-        number_of_b = number_of_b - e_deals
-
-    
     value_of_a = get_value(number_of_a,prices['A'],130,3,200,5)
 
-    value_of_b = floor(number_of_b/prices['B_deal_ammount'])*prices["B_deal"] + (number_of_b % prices["B_deal_ammount"])*prices['B']
+    value_of_b = get_value(number=number_of_b,price=prices['B'],small_deal_price=45,small_deal_quantity=2,
+                           trigger_for_free=2,trigger_value=number_of_e)
 
     value_of_c =  number_of_c * prices['C']
     value_of_d =  number_of_d *  prices['D'] 
@@ -88,5 +87,3 @@ def checkout(skus):
         return -1
 
     return total
-
-
