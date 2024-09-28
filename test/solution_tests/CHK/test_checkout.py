@@ -35,7 +35,7 @@ class TestCheckout():
         assert checkout_solution.checkout('FFF') == 20
     def test_f4(self):
         assert checkout_solution.checkout('FFFF') == 30
-    def test_f5(self):
-        assert checkout_solution.checkout('FFFFF') == 30
+    def test_5u(self):
+        assert checkout_solution.checkout('UUUU') == 120
     def test_letters(self):
         assert checkout_solution.checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZ') == 965
