@@ -23,6 +23,8 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
         free = floor((trigger_value - not_free)/trigger_for_free)
         number = number - free
 
+    print(number)
+
     if small_deal_price==None:
         return number*price
     elif small_deal_price and big_deal_quantity==None:
@@ -102,3 +104,4 @@ def checkout(skus):
     print(values)
 
     return total
+
