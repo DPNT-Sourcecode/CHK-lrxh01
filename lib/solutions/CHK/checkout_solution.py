@@ -14,7 +14,6 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
     else:
         not_free = 0
     if trigger_value != None:
-        print(number)
         print(trigger_value)
         free = floor((trigger_value - not_free)/trigger_for_free)
 
@@ -49,7 +48,7 @@ def checkout(skus):
         
     grid = [
         {'Item':'A','Price':50,'small_deal_price':130,'small_deal_quantity':3,'big_deal_price':200,'big_deal_quantity':5,
-        'trigger_for_free':None,'trigger_value':'None','min_basket':None},
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'B','Price':30,'small_deal_price':45,'small_deal_quantity':2,'big_deal_price':None,'big_deal_quantity':None,
         'trigger_for_free':2,'trigger_value':'E','min_basket':None},
         ]
@@ -62,7 +61,12 @@ def checkout(skus):
         "E":40,
         "F":10, "F_deal_amount":2, "F_deal":10,
         }
-
+    
+    def count_func(skus, letter):
+        if letter == None:
+            return None
+        else: 
+            return skus.count(letter)
     
     number_of_a = skus.count('A')
     number_of_b = skus.count('B')
@@ -75,7 +79,7 @@ def checkout(skus):
     values = [
         get_value(number=skus.count(item['Item']),price=item['Price'],small_deal_price=item['small_deal_price'],small_deal_quantity=item['small_deal_quantity'],
                   big_deal_price=item['big_deal_price'],big_deal_quantity=item['big_deal_quantity'],trigger_for_free=item['trigger_for_free'],
-                  trigger_value=skus.count(item['trigger_value']),min_basket=item['min_basket']) 
+                  trigger_value=count_func(skus,item['trigger_value']),min_basket=item['min_basket']) 
         for item in grid
         ]
     
@@ -101,6 +105,7 @@ def checkout(skus):
         return -1
 
     return total
+
 
 
 
