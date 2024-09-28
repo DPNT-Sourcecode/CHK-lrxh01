@@ -117,8 +117,18 @@ def checkout(skus):
         for value in range(int(item[2]/item[1])):
             total_list.append(item[1])
     
-    print(sorted(total_list))
+    value_to_remove = 0
+    counter = 0
+    total_list = sorted(total_list,reverse=True)
+    while len(total_list) >3:
+        value_to_remove += total_list[0]
+        counter +=1
+        total_list.pop(0)
+    print(value_to_remove,counter)
+
+
     return total
+
 
 
 
