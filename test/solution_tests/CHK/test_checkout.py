@@ -17,7 +17,7 @@ class TestCheckout():
         assert checkout_solution.checkout('AAAABBBBCCCCDDDD') == 410
 
     def test_half(self):
-        assert checkout_solution.checkout('AXA') == -1
+        assert checkout_solution.checkout('AxA') == -1
 
     def test_free_b(self):
         assert checkout_solution.checkout('EEEEBB') == 40+40+40+40
@@ -37,3 +37,5 @@ class TestCheckout():
         assert checkout_solution.checkout('FFFF') == 30
     def test_f5(self):
         assert checkout_solution.checkout('FFFFF') == 30
+    def test_letters(self):
+        assert checkout_solution.checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZ') == 965

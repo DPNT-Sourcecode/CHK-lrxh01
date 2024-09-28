@@ -82,9 +82,15 @@ def checkout(skus):
     total = 0  
     
     values = [
-        get_value(number=skus.count(item['Item']),price=item['Price'],small_deal_price=item['small_deal_price'],small_deal_quantity=item['small_deal_quantity'],
-                  big_deal_price=item['big_deal_price'],big_deal_quantity=item['big_deal_quantity'],trigger_for_free=item['trigger_for_free'],
-                  trigger_value=count_func(skus,item['trigger_value']),min_basket=item['min_basket']) 
+        get_value(number=skus.count(item['Item']),
+                  price=item['Price'],
+                  small_deal_price=item['small_deal_price'],
+                  small_deal_quantity=item['small_deal_quantity'],
+                  big_deal_price=item['big_deal_price'],
+                  big_deal_quantity=item['big_deal_quantity'],
+                  trigger_for_free=item['trigger_for_free'],
+                  trigger_value=count_func(skus,item['trigger_value']),
+                  min_basket=item['min_basket']) 
         for item in grid
         ]
 
