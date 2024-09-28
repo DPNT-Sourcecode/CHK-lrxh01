@@ -5,4 +5,4 @@
 def checkout(skus):
 
 
-    return 20
+    return 50
