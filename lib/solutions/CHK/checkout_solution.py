@@ -44,6 +44,10 @@ def checkout(skus):
     except:
         return -1
         
+    grid = [
+        {'Item':'A','Price':50,'small_deal_price':130,'small_deal_quantity':3,'big_deal_price':200,'big_deal_quantity':5,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        ]
     total = 0
     prices = {
         "A":50,"A_deal":130,"A_deal_ammount":3,"A_second_deal":200,"A_second_amount":5,
@@ -63,13 +67,14 @@ def checkout(skus):
     number_of_f = skus.count('F')
 
     
-    value_of_a = get_value(number_of_a,prices['A'],130,3,200,5)
+    values = [get_value(number=skus.count(item['Item']),price=item['Price']) for item in grid]
+    print(values)
 
     value_of_b = get_value(number=number_of_b,price=prices['B'],small_deal_price=45,small_deal_quantity=2,
                            trigger_for_free=2,trigger_value=number_of_e)
 
     value_of_c =  get_value(number_of_c,prices["C"])
-    value_of_d =  number_of_d *  prices['D'] 
+    value_of_d =  get_value(number_of_c,prices['D'])
     value_of_e = (number_of_e ) * prices["E"]
 
     # Once you go past the 3 F mark you get the 1st F for free as well
@@ -80,11 +85,12 @@ def checkout(skus):
     else:
         value_of_f = number_of_f * prices['F']
 
-    total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e + value_of_f
+    total = sum(values)
 
     if total == 0:
         return -1
 
     return total
+
 
 
