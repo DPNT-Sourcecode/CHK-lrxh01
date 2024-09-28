@@ -3,6 +3,6 @@ from lib.solutions.HLO import hello_solution
 
 
 class TestHello():
-    def hello_test(self):
+    def test_sum(self):
         
-        assert hello_solution.hello('Test string') == 'Test String'
+        assert hello_solution.hello('Test string') == 'Test string'
