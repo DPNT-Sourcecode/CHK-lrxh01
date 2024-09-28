@@ -14,12 +14,10 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
     else:
         not_free = 0
     if trigger_value != None:
-        free = floor((number-not_free)/trigger_for_free)
-        print ('hh')
+        free = floor((trigger_value - not_free)/trigger_for_free)
     else:
         free = 0
     number = number - free
-    print(free)
 
     if small_deal_price==None:
         return number*price
@@ -70,7 +68,7 @@ def checkout(skus):
     value_of_b = get_value(number=number_of_b,price=prices['B'],small_deal_price=45,small_deal_quantity=2,
                            trigger_for_free=2,trigger_value=number_of_e)
 
-    value_of_c =  number_of_c * prices['C']
+    value_of_c =  get_value(number_of_c,prices["C"])
     value_of_d =  number_of_d *  prices['D'] 
     value_of_e = (number_of_e ) * prices["E"]
 
@@ -88,4 +86,5 @@ def checkout(skus):
         return -1
 
     return total
+
 
