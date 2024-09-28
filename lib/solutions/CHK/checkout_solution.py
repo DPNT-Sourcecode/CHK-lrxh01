@@ -104,12 +104,17 @@ def checkout(skus):
     
     # print(values)
     checklist = [values['S'],values['T'],values['X'],values['Y'],values['Z']]
-    price_list = {'S':grid[18]['Price'],
-                  'T':grid[19]['Price'],
-                  'X':grid[23]['Price'],
-                  'Y':grid[24]['Price'],
-                  'Z':grid[25]['Price']}
-    for item in  
+    price_list = [
+        ['S',grid[18]['Price'],values['S']],
+        ['T',grid[19]['Price'],values['T']],
+        ['X',grid[23]['Price'],values['X']],
+        ['Y',grid[24]['Price'],values['Y']],
+        ['Z',grid[25]['Price'],values['Z']],
+    ]
+    total_string = ''
+    for item in checklist:
+        total_string += f'{price_list[""]}'
     
     return total
+
 
