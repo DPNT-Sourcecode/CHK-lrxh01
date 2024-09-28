@@ -10,7 +10,7 @@ def checkout(skus):
     if skus == "":
         return 0
     
-    if re.match(r'[^A-D]*',skus) > 0:
+    if re.match(r'[^A-D]*',skus).start() > 0:
         return -1
 
 
@@ -47,4 +47,5 @@ def checkout(skus):
         return -1
 
     return total
+
 
