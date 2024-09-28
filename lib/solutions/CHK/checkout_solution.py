@@ -62,7 +62,7 @@ def checkout(skus):
     value_of_e = (number_of_e ) * prices["E"]
 
     # Once you go past the 3 F mark you get the 1st F for free as well
-    if number_of_f > 3:
+    if number_of_f >= 3:
         value_of_f = floor(number_of_f/prices['F_deal_amount'])*prices["F_deal"] + (number_of_f % prices["F_deal_amount"])*prices['F']
     else:
         value_of_f = number_of_f * prices['F']
