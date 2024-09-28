@@ -9,19 +9,18 @@ from math import floor
 
 def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big_deal_price=None, 
               big_deal_quantity=None,trigger_for_free=None,trigger_value=None,min_basket=None):
+    
     if min_basket != None:
         not_free = min_basket - trigger_for_free
+        print(not_free)  
     else:
         not_free = 0
     if trigger_value != None:
-        print(trigger_value)
         free = floor((trigger_value - not_free)/trigger_for_free)
-
     else:
         free = 0
-    print(number)
-    number = number - free
-    print(number)
+        if number >= trigger_for_free:
+            number = number - free
     if small_deal_price==None:
         return number*price
     elif small_deal_price and big_deal_quantity==None:
@@ -80,3 +79,4 @@ def checkout(skus):
     print(values)
 
     return total
+
