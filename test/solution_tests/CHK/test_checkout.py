@@ -9,3 +9,9 @@ class TestCheckout():
 
     def test_bad_string(self):
         assert checkout_solution.checkout('bad string') == -1
+
+    def test_bad_input(self):
+        assert checkout_solution.checkout(67) == -1
+    
+    def test_group(self):
+        assert checkout_solution.checkout('AAAABBBBCCCCDDDD') == 410
