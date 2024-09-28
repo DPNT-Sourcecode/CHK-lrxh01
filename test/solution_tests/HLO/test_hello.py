@@ -5,4 +5,5 @@ from lib.solutions.HLO import hello_solution
 class TestHello():
     def test_sum(self):
         
-        assert hello_solution.hello('Test string') == 'Test string'
+        assert hello_solution.hello('Test string') == "Hello, World!"
+
