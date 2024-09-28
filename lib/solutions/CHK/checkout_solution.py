@@ -112,9 +112,11 @@ def checkout(skus):
         ['Z',grid[25]['Price'],values['Z']],
     ]
     total_string = ''
-    for item in checklist:
-        total_string += f'{price_list[""]}'
+    for item in price_list:
+        total_string += f'{int(item[1])},'*int(item[2]/item[1])
+    print(list(total_string),sep=",")
     
     return total
+
 
 
