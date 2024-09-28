@@ -67,7 +67,7 @@ def checkout(skus):
         {'Item':'H','Price':10,'small_deal_price':45,'small_deal_quantity':5,'big_deal_price':80,'big_deal_quantity':10, 'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'I','Price':35,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'J','Price':60,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
-        {'Item':'K','Price':80,'small_deal_price':150,'small_deal_quantity':2,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'K','Price':70,'small_deal_price':120,'small_deal_quantity':2,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'L','Price':90,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'M','Price':15,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':3,'trigger_value':'N','min_basket':None},
         {'Item':'N','Price':40,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
@@ -75,20 +75,20 @@ def checkout(skus):
         {'Item':'P','Price':50,'small_deal_price':200,'small_deal_quantity':5,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'Q','Price':30,'small_deal_price':80,'small_deal_quantity':3,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':3,'trigger_value':'R','min_basket':None},
         {'Item':'R','Price':50,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
-        {'Item':'S','Price':30,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'S','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'T','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'U','Price':40,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':3,'trigger_value':'U','min_basket':4},
         {'Item':'V','Price':50,'small_deal_price':90,'small_deal_quantity':2,'big_deal_price':130,'big_deal_quantity':3,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'W','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
-        {'Item':'X','Price':90,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
-        {'Item':'Y','Price':10,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
-        {'Item':'Z','Price':50,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'X','Price':17,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'Y','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'Z','Price':21,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,'trigger_for_free':None,'trigger_value':None,'min_basket':None},
 
 
         ]
     total = 0  
     
-    values = [
+    values = {item['Item']:[
         get_value(number=skus.count(item['Item']),
                   price=item['Price'],
                   small_deal_price=item['small_deal_price'],
@@ -98,12 +98,13 @@ def checkout(skus):
                   trigger_for_free=item['trigger_for_free'],
                   trigger_value=count_func(skus,item['trigger_value']),
                   min_basket=item['min_basket']) 
-        for item in grid
-        ]
-
-
-    total = sum(values)
-    print(values)
+                  ]
+         for item in grid
+    }
+    
+    # print(values)
+    print(values['S'],values['T'],values['X'],values['Y'],values['Z'])
+    
 
     return total
 
