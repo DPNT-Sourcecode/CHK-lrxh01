@@ -103,7 +103,7 @@ def checkout(skus):
     }
     
     # print(values)
-    checklist = [values['S']/grid[19]['Price'],values['T'],values['X'],values['Y'],values['Z']]
+    checklist = [values['S']/grid[18]['Price'],values['T']/grid[19]['Price'],values['X']/grid[23]['Price'],values['Y']/grid[24]['Price'],values['Z']/grid[25]['Price']]
     
     print(checklist)
     return total
