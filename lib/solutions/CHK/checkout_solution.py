@@ -25,7 +25,8 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
         free = 0
 
     number = number - free
-
+    if number < 0:
+        number = 0
     if small_deal_price==None:
         return number*price
     elif small_deal_price and big_deal_quantity==None:
