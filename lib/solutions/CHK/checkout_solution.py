@@ -28,6 +28,9 @@ def checkout(skus):
         "C":20,
         "D":15,
         "E":40,
+        "F":10,
+        "F_deal_amount":2,
+        "F_deal":10,
         }
 
     
@@ -75,4 +78,5 @@ def checkout(skus):
         return -1
 
     return total
+
 
