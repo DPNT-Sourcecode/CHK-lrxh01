@@ -5,6 +5,7 @@
 
 import re
 from math import floor
+import json
 
 
 def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big_deal_price=None, 
@@ -111,12 +112,14 @@ def checkout(skus):
         ['Y',grid[24]['Price'],values['Y']],
         ['Z',grid[25]['Price'],values['Z']],
     ]
-    total_string = ''
+    total_string = '['
     for item in price_list:
         total_string += f'{int(item[1])},'*int(item[2]/item[1])
-    print(list(total_string),sep=",")
+    total_string += ']'
+    print(json.loads(total_string))
     
     return total
+
 
 
 
