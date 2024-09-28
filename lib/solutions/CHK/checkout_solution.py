@@ -37,8 +37,9 @@ def checkout(skus):
     number_of_d = skus.count('D')
     number_of_e = skus.count('E')
 
+
     a_5_deals = floor(number_of_a/prices['A_second_amount'])
-    a_3_deals = floor((number_of_a-a_5_deals)/prices['A_second_amount'])
+    a_3_deals = floor((number_of_a - a_5_deals*prices['A_second_amount'])/prices['A_second_amount'])
 
     value_of_a = a_5_deals* prices["A_second_deal"]
     + a_3_deals*prices["A_deal"] 
@@ -55,5 +56,6 @@ def checkout(skus):
         return -1
 
     return total
+
 
 
