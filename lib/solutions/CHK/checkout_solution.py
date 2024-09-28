@@ -134,10 +134,13 @@ def checkout(skus):
             counter = 0
             temp_value = 0
         total_list.pop(0)
-    print(value_to_remove,deals)
+    
+    total = sum(values.values())
 
+    total = total - value_to_remove + deals*45
 
     return total
+
 
 
 
