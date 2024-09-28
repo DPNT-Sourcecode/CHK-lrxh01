@@ -6,6 +6,25 @@
 import re
 from math import floor
 
+
+def get_value(number,price, deal_price_1=None, deal_amount_1=None, deal_price_2=None, deal_amount_2=None):
+    if deal_price_1==None:
+        return number*price
+    elif deal_price_1:
+        floor(number/deal_amount_1)*deal_price_1 + (number % deal_amount_1)*price
+    elif deal_amount_2:
+        big_deals = floor(number/deal_amount_2)
+        number_remaining =  number - big_deals*deal_amount_2
+        small_deals = floor(number_remaining/deal_amount_1)
+        remaining = small_deals - small_deals*deal_amount_1
+
+        return big_deals* deal_price_2 + small_deals*deal_price_1 + (remaining % deal_amount_1)*price
+    else:
+        return 0
+
+
+
+
 def checkout(skus):
 
     if skus == "":
@@ -18,20 +37,12 @@ def checkout(skus):
         
     total = 0
     prices = {
-        "A":50,
-        "A_deal":130,
-        "A_deal_ammount":3,
-        "A_second_deal":200,
-        "A_second_amount":5,
-        "B":30,
-        "B_deal":45,
-        "B_deal_ammount":2,
+        "A":50,"A_deal":130,"A_deal_ammount":3,"A_second_deal":200,"A_second_amount":5,
+        "B":30,"B_deal":45, "B_deal_ammount":2,
         "C":20,
         "D":15,
         "E":40,
-        "F":10,
-        "F_deal_amount":2,
-        "F_deal":10,
+        "F":10, "F_deal_amount":2, "F_deal":10,
         }
 
     
@@ -55,8 +66,10 @@ def checkout(skus):
         number_of_b = number_of_b - e_deals
 
     
-    value_of_a = a_5_deals* prices["A_second_deal"] + a_3_deals*prices["A_deal"]+ (a_remaining % prices["A_deal_ammount"])*prices['A']
+    value_of_a = get_value(number_of_a,prices['A'],130,3,200,5)
+
     value_of_b = floor(number_of_b/prices['B_deal_ammount'])*prices["B_deal"] + (number_of_b % prices["B_deal_ammount"])*prices['B']
+
     value_of_c =  number_of_c * prices['C']
     value_of_d =  number_of_d *  prices['D'] 
     value_of_e = (number_of_e ) * prices["E"]
@@ -69,11 +82,10 @@ def checkout(skus):
     else:
         value_of_f = number_of_f * prices['F']
 
- 
-
     total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e + value_of_f
 
     if total == 0:
         return -1
 
     return total
+
