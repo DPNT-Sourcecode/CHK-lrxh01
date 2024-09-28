@@ -2,8 +2,7 @@
 from lib.solutions.HLO import hello_solution
 
 
-class HelloTest():
+class TestHello():
     def hello_test(self):
+        
         assert hello_solution.hello('Test string') == 'Test String'
-
-
