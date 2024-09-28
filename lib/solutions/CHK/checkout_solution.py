@@ -2,8 +2,17 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+import re
 from math import floor
 def checkout(skus):
+
+    if skus == "":
+        return 0
+    
+    if re.match(r'[^A-D]*',skus) > 0:
+        return -1
+
 
     total = 0
     prices = {
@@ -17,22 +26,14 @@ def checkout(skus):
         "D":15,
         }
 
-    try:
-        number_of_a = skus.count('A')
-    except:
-        number_of_a = 0
-    try:
-        number_of_b = skus.count('B')
-    except:
-        number_of_b = 0
-    try:
-        number_of_c = skus.count('C')
-    except:
-        number_of_c = 0
-    try:
-        number_of_d = skus.count('D')
-    except:
-        number_of_d = 0
+    
+    number_of_a = skus.count('A')
+    number_of_b = skus.count('B')
+    number_of_b = 0
+    number_of_c = skus.count('C')
+    number_of_c = 0
+    number_of_d = skus.count('D')
+    number_of_d = 0
 
 
     value_of_a = floor(number_of_a/prices['A_deal_ammount'])*prices["A_deal"] + (number_of_a % prices["A_deal_ammount"])*prices['A']
@@ -46,3 +47,4 @@ def checkout(skus):
         return -1
 
     return total
+
