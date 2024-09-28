@@ -15,3 +15,6 @@ class TestCheckout():
     
     def test_group(self):
         assert checkout_solution.checkout('AAAABBBBCCCCDDDD') == 410
+
+    def test_half(self):
+        assert checkout_solution.checkout('AXA') == -1
