@@ -88,7 +88,7 @@ def checkout(skus):
         ]
     total = 0  
     
-    values = {item['Item']:[
+    values = {item['Item']:
         get_value(number=skus.count(item['Item']),
                   price=item['Price'],
                   small_deal_price=item['small_deal_price'],
@@ -98,14 +98,15 @@ def checkout(skus):
                   trigger_for_free=item['trigger_for_free'],
                   trigger_value=count_func(skus,item['trigger_value']),
                   min_basket=item['min_basket']) 
-                  ]
+                  
          for item in grid
     }
     
     # print(values)
-    print(values['S'],values['T'],values['X'],values['Y'],values['Z'])
+    checklist = [values['S']/grid[19]['Price'],values['T'],values['X'],values['Y'],values['Z']]
     
-
+    print(checklist)
     return total
+
 
 
