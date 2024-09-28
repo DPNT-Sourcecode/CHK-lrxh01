@@ -34,7 +34,11 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
     else:
         return 0
 
-
+def count_func(skus, letter):
+        if letter == None:
+            return None
+        else: 
+            return skus.count(letter)
 
 def checkout(skus):
 
@@ -51,6 +55,27 @@ def checkout(skus):
         'trigger_for_free':None,'trigger_value':None,'min_basket':None},
         {'Item':'B','Price':30,'small_deal_price':45,'small_deal_quantity':2,'big_deal_price':None,'big_deal_quantity':None,
         'trigger_for_free':2,'trigger_value':'E','min_basket':None},
+        {'Item':'C','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'D','Price':15,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'E','Price':40,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'F','Price':10,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':2,'trigger_value':"F",'min_basket':3},
+        {'Item':'C','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'C','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'C','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'C','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'C','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+        {'Item':'C','Price':20,'small_deal_price':None,'small_deal_quantity':None,'big_deal_price':None,'big_deal_quantity':None,
+        'trigger_for_free':None,'trigger_value':None,'min_basket':None},
+
         ]
     total = 0
     prices = {
@@ -62,11 +87,7 @@ def checkout(skus):
         "F":10, "F_deal_amount":2, "F_deal":10,
         }
     
-    def count_func(skus, letter):
-        if letter == None:
-            return None
-        else: 
-            return skus.count(letter)
+    
     
     number_of_a = skus.count('A')
     number_of_b = skus.count('B')
@@ -105,6 +126,7 @@ def checkout(skus):
         return -1
 
     return total
+
 
 
 
