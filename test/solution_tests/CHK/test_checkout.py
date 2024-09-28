@@ -6,3 +6,6 @@ class TestCheckout():
 
     def test_lots_of_A(self):
         assert checkout_solution.checkout('AAAA') == 180
+
+    def test_bad_string(self):
+        assert checkout_solution.checkout('bad string') == -1

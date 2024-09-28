@@ -37,10 +37,14 @@ def checkout(skus):
 
     value_of_a = floor(number_of_a/prices['A_deal_ammount'])*prices["A_deal"] + (number_of_a % prices["A_deal_ammount"])*prices['A']
     value_of_b= floor(number_of_b/prices['B_deal_ammount'])*prices["B_deal"] + (number_of_b % prices["B_deal_ammount"])*prices['B']
-    value_of_c = floor(number_of_c/prices['C_deal_ammount'])*prices["C_deal"] + (number_of_c % prices["C_deal_ammount"])*prices['C']
-    value_of_d = floor(number_of_d/prices['D_deal_ammount'])*prices["D_deal"] + (number_of_d % prices["D_deal_ammount"])*prices['D']
+    value_of_c =  number_of_c * prices['C']
+    value_of_d =  number_of_d *  prices['D'] 
 
     total = value_of_a + value_of_b + value_of_c + value_of_d
 
-    return value_of_a
+    if total == 0:
+        return -1
+
+
+    return total
 
