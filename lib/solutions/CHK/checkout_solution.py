@@ -11,7 +11,7 @@ def checkout(skus):
         return 0
     
     try: 
-        re.match(r'^[ABCD]+$',skus).start()
+        re.match(r'^[ABCDE]+$',skus).start()
     except:
         return -1
         
@@ -39,9 +39,9 @@ def checkout(skus):
 
     
     a_5_deals = floor(number_of_a/prices['A_second_amount'])
-    
+    print(a_5_deals)
     a_3_deals = floor((number_of_a - a_5_deals*prices['A_second_amount'])/prices['A_deal_ammount'])
-
+    print(a_3_deals)
     e_deals = floor(number_of_e/2)
 
     if e_deals > number_of_b:
@@ -59,7 +59,7 @@ def checkout(skus):
 
     print(value_of_a,value_of_b,value_of_c,value_of_d)
 
-    total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e - free_b
+    total = value_of_a + value_of_b + value_of_c + value_of_d + value_of_e - free_b*prices["B"]
 
     if total == 0:
         return -1
