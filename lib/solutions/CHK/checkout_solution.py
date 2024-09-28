@@ -15,15 +15,16 @@ def get_value(number,price, small_deal_price=None, small_deal_quantity=None, big
 
     else:
         not_free = 0
-    print(number,trigger_for_free,trigger_value)
-    if trigger_value != None and number >= trigger_for_free:
+    
+    # Calculate how many are free
+    try:
         free = floor((trigger_value - not_free)/trigger_for_free)
-        number = number - free
-    elif trigger_value != None:
-        free = floor((trigger_value - not_free)/trigger_for_free)
-        number = number - free
+        if free <0:
+            free = 0
+    except:
+        free = 0
 
-    print(number)
+    number = number - free
 
     if small_deal_price==None:
         return number*price
@@ -104,4 +105,5 @@ def checkout(skus):
     print(values)
 
     return total
+
 
